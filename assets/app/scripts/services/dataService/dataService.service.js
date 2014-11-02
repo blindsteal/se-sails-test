@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('finanzomatApp')
-  .factory('dataService', function ($http) {
+  .factory('dataService', function ($http, $sails) {
         var data = {
             intentions: [],
             attributes: [],
@@ -9,40 +9,53 @@ angular.module('finanzomatApp')
             individuals: [] 
         };
 
-        var updateIntentions = function() {
+        var update = function(model) {
+            $sails.get('/'+model).success(function(response){
+                console.log(model+' connected: '+JSON.stringify(response));
 
+                data[model+'s'] = response;
+
+                $sails.on(model, function(message){
+                    console.log('Received message: '+JSON.stringify(message));
+
+                });
+            }).error(function(response){
+                console.log('Unable to get '+JSON.stringify(response));
+            });
         };
 
-        var updateItems = function () {
-
+        var submit = function(object, model){
+            var pluralize = model + 's';
+            if(_.has(object, '$$hashKey')) delete object['$$hashKey'];
+            if(_.contains(_.pluck(data[pluralize], 'id'), object.id)){
+                $sails.put('/'+model+'/'+object.id, object)
+                    .success(function(response){
+                        console.log(model+' updated: '+JSON.stringify(response));
+                        _.remove(data[pluralize], {id: int.id});
+                        data[pluralize].push(response);
+                    }).error(function(response){
+                        console.log('Unable to update '+model+': '+JSON.stringify(response));
+                    });
+            }
+            else{
+                $sails.post('/'+model, object)
+                    .success(function(response){
+                        console.log(model+' created: '+JSON.stringify(response));
+                        data[pluralize].push(response);
+                    }).error(function(response){
+                        console.log('Unable to create '+model+': '+JSON.stringify(response));
+                    });
+            }
         };
 
-        var updateAttributes = function () {
-
-        };
-
-        var submitIntention = function(int) {
-
-        };
-
-        var submitItem = function (item) {
-
-        };
-
-        var submitAttribute = function (attr) {
-
-        };
-
-        var deleteIntention = function(id){
-
-        };
-
-        var deleteAttribute = function(id){
-
-        };
-
-        var deleteItem = function(id){
-
+        var del = function(id, model){
+            $sails.delete('/'+model+'/'+id)
+                .success(function(response){
+                    console.log(model+' deleted: '+JSON.stringify(response));
+                    _.remove(data[model+'s'], {id: id});
+                }).error(function(response){
+                    console.log('Unable to delete '+model+': '+JSON.stringify(response));
+                });
         };
 
         var getData = function(){
@@ -57,28 +70,17 @@ angular.module('finanzomatApp')
 
         };
 
-        var submitScore = function (item, score){
-
-        };
-
-        updateIntentions();
-        updateAttributes();
-        updateItems();
+        update('intention');
+        update('attribute');
+        update('item');
 
         // Public API here
         return {
-            updateAttributes: updateAttributes,
-            submitAttribute: submitAttribute,
-            deleteAttribute: deleteAttribute,
-            updateItems: updateItems,
-            submitItem: submitItem,
-            deleteItem: deleteItem,
-            updateIntentions: updateIntentions,
-            submitIntention: submitIntention,
-            deleteIntention: deleteIntention,
             linkIntention: linkIntention,
             unlinkIntention: unlinkIntention,
-            submitScore: submitScore,
+            submit: submit,
+            update: update,
+            del: del,
             getData: getData
         };
   });

@@ -25,6 +25,12 @@
         </div>
         <br/>
 
+        <div class="input-group">
+            <span class="input-group-addon">Form Ctrl</span>
+            <input type="text" class="form-control" ng-model="attribute.formCtrl" placeholder="">
+        </div>
+        <br/>
+
         <div ng-repeat="label in attribute.labels">
             <div class="input-group">
                 <span class="input-group-addon">{{label.text}}</span>
@@ -51,11 +57,6 @@
         </div>
         <br/>
 
-        <div class="input-group">
-            <span class="input-group-addon">Form Ctrl</span>
-            <input type="text" class="form-control" ng-model="attribute.formCtrl" placeholder="">
-        </div>
-        <br/>
         <button type="button" class="btn btn-sm btn-primary" ng-click="addLabel(attribute)"><span
                 class="glyphicon glyphicon-plus"></span> Label
         </button>

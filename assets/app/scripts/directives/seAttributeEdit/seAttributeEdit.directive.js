@@ -12,7 +12,7 @@ angular.module('finanzomatApp')
                 $scope.newLabel = undefined;
 
                 $scope.saveAttribute = function () {
-                    dataService.submitAttribute($scope.attribute);
+                    dataService.submit($scope.attribute, 'attribute');
                 };
                 $scope.addLabel = function(attribute){
                     if(!attribute.labels){

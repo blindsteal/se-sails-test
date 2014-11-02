@@ -11,6 +11,7 @@ module.exports = {
       name: 'string',
       desc: 'string',
       matching: 'string',
+      formCtrl: 'string',
 
       labels: {
           collection: 'label',

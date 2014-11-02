@@ -23,15 +23,15 @@ angular.module('finanzomatApp')
         };
 
         $scope.deleteIntention = function(id){
-            dataService.deleteIntention(id);
+            dataService.del(id, 'intention');
         };
 
         $scope.deleteAttribute = function(id){
-            dataService.deleteAttribute(id);
+            dataService.del(id, 'attribute');
         };
 
         $scope.deleteItem = function(id){
-            dataService.deleteItem(id);
+            dataService.del(id, 'item');
         };
 
         $scope.hasAttribute = function(attributeName) {

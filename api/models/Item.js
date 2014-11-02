@@ -21,6 +21,15 @@ module.exports = {
       scores: {
           collection: 'caScore',
           via: 'item'
+      },
+
+      parent: {
+          model: 'item'
+      },
+
+      children: {
+          collection: 'item',
+          via: 'parent'
       }
 
   }

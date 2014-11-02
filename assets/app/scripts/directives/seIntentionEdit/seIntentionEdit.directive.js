@@ -10,7 +10,7 @@ angular.module('finanzomatApp')
             },
             controller: function($scope, dataService){
                 $scope.saveIntention = function(){
-                    dataService.submitIntention($scope.intention);
+                    dataService.submit($scope.intention, 'intention');
                 };
             },
             link: function (scope, element, attrs) {

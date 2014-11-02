@@ -39,7 +39,7 @@ angular.module('finanzomatApp')
 
                 $scope.saveItem = function () {
                     if(!$scope.item.parentId) $scope.item.parentId = -1;
-                    dataService.submitItem($scope.item);
+                    dataService.submit($scope.item, 'item');
                 };
             },
             link: function (scope, element, attrs) {

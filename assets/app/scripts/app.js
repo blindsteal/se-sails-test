@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ui.router',
     'ui.bootstrap',
-    'ui.bootstrap-slider'
+    'ui.bootstrap-slider',
+    'ngSails'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider
