@@ -13,21 +13,26 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ui.router',
+    'ui.bootstrap',
+    'ui.bootstrap-slider'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: '/app/views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: '/app/views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        $urlRouterProvider
+            .otherwise('/');
+
+        $locationProvider.html5Mode(true);
+
+        $stateProvider
+            .state('editor', {
+                url: '/',
+                templateUrl: 'app/views/editor/editor.html',
+                controller: 'EditorCtrl'
+            })
+            .state('about', {
+                url: '/about',
+                templateUrl: 'app/views/about.html',
+                controller: 'AboutCtrl'
+            });
   });

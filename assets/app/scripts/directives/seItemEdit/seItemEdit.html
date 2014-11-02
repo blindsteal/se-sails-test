@@ -1,0 +1,94 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h5>Add/Edit Item</h5></div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="item.id" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" class="form-control" ng-model="item.name" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Desc</span>
+            <input type="text" class="form-control" ng-model="item.desc" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Level</span>
+            <input type="text" class="form-control" ng-model="item.level" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Parent</span>
+            <input type="text" class="form-control" ng-model="item.parentId" placeholder=""
+                   typeahead="item.id as item.name for item in data.items | filter:$viewValue | limitTo:8"
+                   typeahead-wait-ms="200">
+        </div>
+        <br/>
+
+        <div ng-repeat="intention in item.intentions">
+            <div class="input-group">
+                <span class="input-group-addon">Intention</span>
+                <input type="text" class="form-control" ng-model="intention.id" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeIntention(item, intention)"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                    </span>
+            </div>
+            <br/>
+        </div>
+        <div ng-repeat="score in item.scores">
+            <div class="input-group">
+                <span class="input-group-addon">{{score.attributeId}}</span>
+                <input type="text" class="form-control" ng-model="score.value" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeScore(item, score)"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                    </span>
+            </div>
+            <br/>
+        </div>
+        <div ng-repeat="child in item.children">
+            <div class="input-group">
+                <span class="input-group-addon">Child</span>
+                <input type="text" class="form-control" ng-model="child.name" placeholder="">
+            </div>
+            <br/>
+        </div>
+
+        <p>Add new intention:</p>
+
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="intentionToAdd.id" placeholder=""
+                   typeahead="intention.id as intention.name for intention in data.intentions | filter:$viewValue | limitTo:8"
+                   typeahead-wait-ms="200">
+        </div>
+        <br/>
+
+        <p>Add new score:</p>
+
+        <div class="input-group">
+            <span class="input-group-addon">Attribute ID</span>
+            <input type="text" class="form-control" ng-model="scoreToAdd.attributeId" placeholder=""
+                   typeahead="attribute.id as attribute.name for attribute in data.attributes | filter:$viewValue | limitTo:8"
+                   typeahead-wait-ms="200">
+            <span class="input-group-addon">Value</span>
+            <input type="text" class="form-control" ng-model="scoreToAdd.value" placeholder="">
+        </div>
+        <br/>
+
+        <button type="button" class="btn btn-sm btn-primary" ng-click="addIntention(item, intentionToAdd)"><span
+                class="glyphicon glyphicon-plus"></span> Intention
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="addScore(item, scoreToAdd)"><span
+                class="glyphicon glyphicon-plus"></span> Score
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="saveItem()">Save</button>
+    </div>
+</div>

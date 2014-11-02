@@ -1,0 +1,63 @@
+<div class="col-md-4">
+    <se-item-edit item="newItem"></se-item-edit>
+    <h5>Existing categories:</h5>
+    <div class="input-group">
+        <span class="input-group-addon">Filter by Attribute</span>
+        <input type="text" class="form-control" ng-model="attributeFilter" placeholder="">
+    </div>
+    <br/>
+    <accordion close-others="oneAtATime">
+        <accordion-group ng-repeat="item in data.items | filter:hasAttribute(attributeFilter)">
+            <accordion-heading>
+                {{item.name}}
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteItem(item.id)">
+                    <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                </button>
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadItem(item.id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+            </accordion-heading>
+            {{ item | json }}
+        </accordion-group>
+    </accordion>
+</div>
+
+<div class="col-md-4">
+    <se-attribute-edit attribute="newAttribute"></se-attribute-edit>
+    <h5>Existing attributes:</h5>
+    <accordion close-others="oneAtATime">
+        <accordion-group ng-repeat="attribute in data.attributes">
+            <accordion-heading>
+                {{attribute.name}}
+                <button type="button" class="btn btn-default btn-xs pull-right"
+                        ng-click="deleteAttribute(attribute.id)"><span
+                        class="glyphicon glyphicon-remove-circle"></span> Delete
+                </button>
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadAttribute(attribute.id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+            </accordion-heading>
+            {{ attribute | json }}
+        </accordion-group>
+    </accordion>
+</div>
+
+<div class="col-md-4">
+    <se-intention-edit intention="newIntention"></se-intention-edit>
+    <h5>Existing intentions:</h5>
+    <accordion close-others="oneAtATime">
+        <accordion-group ng-repeat="intention in data.intentions">
+            <accordion-heading>
+                {{intention.name}}
+                <button type="button" class="btn btn-default btn-xs pull-right"
+                        ng-click="deleteIntention(intention.id)"><span
+                        class="glyphicon glyphicon-remove-circle"></span> Delete
+                </button>
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadIntention(intention.id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+            </accordion-heading>
+            {{ intention | json }}
+        </accordion-group>
+    </accordion>
+</div>

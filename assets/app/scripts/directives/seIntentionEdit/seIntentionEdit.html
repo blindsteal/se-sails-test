@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h5>Add/Edit Intention</h5></div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="intention.id" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" class="form-control" ng-model="intention.name" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Desc</span>
+            <input type="text" class="form-control" ng-model="intention.desc" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Subject</span>
+            <input type="text" class="form-control" ng-model="intention.subject" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Predicate</span>
+            <input type="text" class="form-control" ng-model="intention.predicate" placeholder="">
+        </div>
+        <br/>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="saveIntention()">Save</button>
+    </div>
+</div>

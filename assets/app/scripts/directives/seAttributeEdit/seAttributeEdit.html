@@ -1,0 +1,64 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h5>Add/Edit Attribute</h5></div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="attribute.id" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" class="form-control" ng-model="attribute.name" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Desc</span>
+            <input type="text" class="form-control" ng-model="attribute.desc" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Matching</span>
+            <input type="text" class="form-control" ng-model="attribute.matching" placeholder="">
+        </div>
+        <br/>
+
+        <div ng-repeat="label in attribute.labels">
+            <div class="input-group">
+                <span class="input-group-addon">{{label.text}}</span>
+                <input type="text" class="form-control" ng-model="label.value" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeLabel(attribute, label)">
+                            <span class="glyphicon glyphicon-remove-circle"></span></button>
+                    </span>
+            </div>
+            <br/>
+        </div>
+
+        <p>Add Label:</p>
+
+        <div class="input-group">
+            <span class="input-group-addon">Text</span>
+            <input type="text" class="form-control" ng-model="newLabel.text" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Value</span>
+            <input type="text" class="form-control" ng-model="newLabel.value" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Form Ctrl</span>
+            <input type="text" class="form-control" ng-model="attribute.formCtrl" placeholder="">
+        </div>
+        <br/>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="addLabel(attribute)"><span
+                class="glyphicon glyphicon-plus"></span> Label
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="saveAttribute()">Save</button>
+    </div>
+</div>

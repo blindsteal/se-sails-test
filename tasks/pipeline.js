@@ -31,12 +31,15 @@ var jsFilesToInject = [
   'bower_components/modernizr/modernizr.js',
   'bower_components/socket.io-client/socket.io.js',
   'bower_components/jquery/dist/jquery.min.js',
-  'bower_components/angular/angular.min.js',
+  'bower_components/angular/angular.js',
   'bower_components/bootstrap/dist/js/bootstrap.min.js',
+  'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+  'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
   // Dependencies like jQuery, or Angular are brought in here
   'bower_components/**/angular-*.min.js',
   'bower_components/**/bootstrap-*.min.js',
+  'bower_components/angular-bootstrap-slider/slider.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
