@@ -6,6 +6,11 @@
  */
 
 module.exports = {
+    topattributes: function(req, res){
+        Intention.getTopAttributes({id: req.param('id')}, function(err, attributes){
+            res.send(attributes);
+        });
+    }
 	
 };
 

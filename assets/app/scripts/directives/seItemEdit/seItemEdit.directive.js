@@ -11,7 +11,6 @@ angular.module('finanzomatApp')
             controller: function ($scope, dataService) {
                 $scope.scoreToAdd = undefined;
                 $scope.intentionToAdd = undefined;
-                $scope.data = dataService.getData();
 
                 $scope.removeScore = function(item, score){
                     dataService.unlink(item, score, 'item', 'cascore', 'scores');

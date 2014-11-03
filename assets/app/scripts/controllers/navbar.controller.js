@@ -3,8 +3,11 @@
 angular.module('finanzomatApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
-      'title': 'Editor',
-      'link': 'editor'
+      'title': 'Profiling',
+      'link': 'profiling'
+    }, {
+        'title': 'Editor',
+        'link': 'editor'
     }, {
       'title': 'About',
       'link': 'about'

@@ -1,0 +1,84 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h3>Intention</h3><h4>Was ist dein Anliegen</h4></div>
+    <div class="panel-body">
+        <div class="row">
+	    <!-- Presentation of all intentions -->     
+            <div class="col-lg-6">
+				<div class="btn-group">
+				<label class="btn btn-primary btn-lg" ng-repeat="intention in data.intentions" ng-model="userprofile.intention" ng-change="consoleFB()" btn-radio="'{{intention.id}}'">{{intention.subject}} {{intention.predicate}}</label>
+                </div>
+            </div>      
+		</div>
+	</div>
+</div>
+<br/>
+<br/>
+
+<!-- Self-Profiling 
+<div class="panel panel-primary">
+	<div class="panel-heading">
+	<h3>Selfprofiling</h3><h4>Was ist dir an der Lösung wichtig</h4>
+	</div>
+	<div class="panel-body">
+		<div ng-repeat="item in data.items | filter: hasIntention(userprofile.intention)">
+			<div class="row" ng-repeat="cat_attribute in category.attributes" >	
+				<div ng-repeat="attribute in data.attributes | filter: hasAttributeId(cat_attribute.attribute) | filter: {formCtrl:'slider'}">
+					<div class="col-lg-2">
+						<h4>{{attribute.name}}</h4>
+						<small>{{attribute.desc}}</small>
+					</div>
+				<div class="col-lg-4">
+					<div class="slider-box"><span slider ng-change="consoleFB()" ng-model="userprofile.attributes[attribute._id]" min="0" max="10" step="1"></span></div>
+					<div class="slider-label-left pull-left">{{attribute.labelMin}}</div>
+					<div class="slider-label-right pull-right">{{attribute.labelMax}}</div>
+				</div>
+				<div class="col-lg-6"></div>
+						
+				<div ng-repeat="attribute in data.attributes | filter: hasAttributeId(cat_attribute.attribute) | filter: {formCtrl:'radio'}">
+					<div class="col-lg-2">
+						<h4>{{attribute.name}}</h4>
+						<small>{{attribute.desc}}</small>
+					</div>
+				<div class="col-lg-4">
+					<div class="btn-group">
+					    <label class="btn btn-primary btn-xs" ng-model="userprofile.attributes[attribute._id]" ng-change="consoleFB()" ng-repeat="label in attribute.labels"  btn-radio="'{{label.value}}'">{{label.label}}</label>
+					</div>
+				</div>
+				<div class="col-lg-6"></div>
+				
+				<div ng-repeat="attribute in data.attributes | filter: hasAttributeId(cat_attribute.attribute) | filter: {formCtrl:'star'}">
+				    <div class="row">
+				        <div class="col-lg-2">
+				            <h4>{{attribute.name}}</h4>
+				            <small>{{attribute.desc}}</small>
+				        </div>
+				        <div class="col-lg-4">
+				            <div class="btn-group">
+				                <rating ng-change="consoleFB()" ng-model="userprofile.attributes[attribute._id]" max="10" readonly="false" on-hover="hoveringOver(value)"></rating>
+				                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar">{{percent}}%</span>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-lg-6"></div>
+				
+				<div ng-repeat="attribute in data.attributes | filter: hasAttributeId(cat_attribute.attribute) | filter: {formCtrl:'pagination'}">
+				    <div class="row">
+				        <div class="col-lg-2">
+				            <h4>{{attribute.name}}</h4>
+				            <small>{{attribute.desc}}</small>
+				        </div>
+				        <div class="col-lg-4">
+				                <pagination ng-change="consoleFB()" direction-links="false" total-items="10" items-per-page="1" ng-model="userprofile.attributes[attribute._id]" ></pagination>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-lg-6"></div>
+				
+				
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+-->

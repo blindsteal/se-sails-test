@@ -1,0 +1,11 @@
+.slider-box .slider {
+	width: 100% !important; /* Overwrites style from bootstrap-slider.css */
+}
+
+.slider-label-left {
+    float: left;
+}
+
+.slider-label-right {
+    float: right;
+}

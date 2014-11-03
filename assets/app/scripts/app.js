@@ -23,11 +23,11 @@ angular
         $urlRouterProvider
             .otherwise('/');
 
-        $locationProvider.html5Mode(true);
+        // $locationProvider.html5Mode(true);
 
         $stateProvider
             .state('editor', {
-                url: '/',
+                url: '/editor',
                 templateUrl: 'app/views/editor/editor.html',
                 controller: 'EditorCtrl'
             })
@@ -35,5 +35,10 @@ angular
                 url: '/about',
                 templateUrl: 'app/views/about.html',
                 controller: 'AboutCtrl'
+            })
+            .state('profiling', {
+                url: '/',
+                templateUrl: 'app/views/selfprofiling/selfprofiling.html',
+                controller: 'SelfprofilingCtrl'
             });
   });
