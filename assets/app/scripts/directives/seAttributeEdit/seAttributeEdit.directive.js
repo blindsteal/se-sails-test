@@ -18,11 +18,14 @@ angular.module('finanzomatApp')
                     if(!attribute.labels){
                         attribute.labels = [];
                     }
+                    dataService.link(attribute, $scope.newLabel, 'attribute', 'label', 'labels');
                     attribute.labels.push($scope.newLabel);
                     $scope.newLabel = undefined;
 
                 };
                 $scope.removeLabel = function(attribute, label){
+                    dataService.unlink(attribute, label, 'attribute', 'label', 'labels');
+                    dataService.del(label, 'label');
                     _.remove(attribute.labels, {text: label.text});
                 };
             },

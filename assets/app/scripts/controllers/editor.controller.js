@@ -22,16 +22,16 @@ angular.module('finanzomatApp')
             $scope.newIntention = _.cloneDeep(_.find($scope.data.intentions, {id: id}));
         };
 
-        $scope.deleteIntention = function(id){
-            dataService.del(id, 'intention');
+        $scope.deleteIntention = function(intention){
+            dataService.del(intention, 'intention');
         };
 
-        $scope.deleteAttribute = function(id){
-            dataService.del(id, 'attribute');
+        $scope.deleteAttribute = function(attribute){
+            dataService.del(attribute, 'attribute');
         };
 
-        $scope.deleteItem = function(id){
-            dataService.del(id, 'item');
+        $scope.deleteItem = function(item){
+            dataService.del(item, 'item');
         };
 
         $scope.hasAttribute = function(attributeName) {

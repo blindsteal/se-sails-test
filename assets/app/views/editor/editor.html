@@ -10,7 +10,7 @@
         <accordion-group ng-repeat="item in data.items | filter:hasAttribute(attributeFilter)">
             <accordion-heading>
                 {{item.name}}
-                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteItem(item.id)">
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteItem(item)">
                     <span class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
                 <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadItem(item.id)">
@@ -30,7 +30,7 @@
             <accordion-heading>
                 {{attribute.name}}
                 <button type="button" class="btn btn-default btn-xs pull-right"
-                        ng-click="deleteAttribute(attribute.id)"><span
+                        ng-click="deleteAttribute(attribute)"><span
                         class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
                 <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadAttribute(attribute.id)">
@@ -50,7 +50,7 @@
             <accordion-heading>
                 {{intention.name}}
                 <button type="button" class="btn btn-default btn-xs pull-right"
-                        ng-click="deleteIntention(intention.id)"><span
+                        ng-click="deleteIntention(intention)"><span
                         class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
                 <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadIntention(intention.id)">

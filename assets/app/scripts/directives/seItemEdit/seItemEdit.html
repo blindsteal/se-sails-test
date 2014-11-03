@@ -45,7 +45,7 @@
         </div>
         <div ng-repeat="score in item.scores">
             <div class="input-group">
-                <span class="input-group-addon">{{score.attributeId}}</span>
+                <span class="input-group-addon">{{score.attribute}}</span>
                 <input type="text" class="form-control" ng-model="score.value" placeholder="">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="removeScore(item, score)"><span class="glyphicon glyphicon-remove-circle"></span></button>
@@ -75,7 +75,7 @@
 
         <div class="input-group">
             <span class="input-group-addon">Attribute ID</span>
-            <input type="text" class="form-control" ng-model="scoreToAdd.attributeId" placeholder=""
+            <input type="text" class="form-control" ng-model="scoreToAdd.attribute" placeholder=""
                    typeahead="attribute.id as attribute.name for attribute in data.attributes | filter:$viewValue | limitTo:8"
                    typeahead-wait-ms="200">
             <span class="input-group-addon">Value</span>

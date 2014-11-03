@@ -14,12 +14,14 @@ angular.module('finanzomatApp')
                 $scope.data = dataService.getData();
 
                 $scope.removeScore = function(item, score){
+                    dataService.unlink(item, score, 'item', 'cascore', 'scores');
+                    dataService.del(score, 'cascore');
                     _.remove($scope.item.scores, {attributeId:score.attributeId});
                 };
 
                 $scope.removeIntention = function(item, intention){
+                    dataService.unlink(item, intention, 'item', 'intention', 'intentions');
                     _.remove($scope.item.intentions, {id:intention.id});
-                    dataService.unlinkIntention(item, intention);
                 };
 
                 $scope.addIntention = function (item, intention) {
@@ -28,12 +30,18 @@ angular.module('finanzomatApp')
                         $scope.intentionToAdd = undefined;
                         return;
                     }
-                    dataService.linkIntention(item, intention);
+                    dataService.link(item, intention, 'item', 'intention', 'intentions');
+                    $scope.item.intentions.push(intention);
                     $scope.intentionToAdd = undefined;
                 };
 
                 $scope.addScore = function (item, score) {
-                    dataService.submitScore(item, score);
+                    if(!item.scores){
+                        item.scores = [];
+                    }
+                    dataService.link(item, score, 'item', 'cascore', 'scores');
+                    //dataService.link(score, {id:score.attribute}, 'cascore', 'attribute', 'attribute');
+                    $scope.item.scores.push(score);
                     $scope.scoreToAdd = undefined;
                 };
 
